@@ -1,0 +1,117 @@
+#How to use for loop with test cases
+#Take two numbers and check: If both are greater than 10. If at least
+    one is less than 5.
+test_cases = [
+    (15, 12),  # Both > 10
+    (12, 8),   # One <= 10
+    (10, 11),  # One is exactly 10 (not greater than)
+    (20, 6),   # One is > 5 but <= 10
+    (4, 4)     # Neither > 5
+]
+
+print(f"{'Pair':<10} | {'Condition Met?'}")
+print("-" * 30)
+
+for v1, v2 in test_cases:
+    # Requirement: both > 10 and (either one > 5)
+    # Note: mathematically, if both are > 10, the second part is always true.
+    is_met = (v1 > 10 and v2 > 10) and (v1 > 5 or v2 > 5)
+   
+    result = "Yes" if is_met else "No"
+    print(f"({v1}, {v2}):<10 | {result}")
+
+
+
+"""The logic used in the test loop is
+ (v1 > 10 and v2 > 10) and (v1 > 5 or v2 > 5).
+ Here's a breakdown:
+
+(v1 > 10 and v2 > 10): This checks that both
+ numbers are strictly greater than 10.
+ If either is 10 or less, the whole condition
+ fails.
+(v1 > 5 or v2 > 5): This checks if at least
+one of the numbers is greater than 5.
+Logical Fact: Because the numbers must be
+ greater than 10 to satisfy the first part,
+ they will automatically be greater than 5.
+ However, I included both parts to explicitly
+ follow your exercise requirements.
+The Loop: It iterates through a list of pairs
+ (tuples) so you can see exactly where the logic
+ returns True (Yes) or False (No)."""
+
+
+#Few more examples to practice:
+
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+"""Problem Statement 1 : VIP Discount Eligibility
+Write a program that determines if a customer is eligible for a VIP discount.
+The purchase amount must be greater than 100,The customer must have been a member for more than 2 years.
+OR regardless of the above,if the purchase is over 500, they get it automatically."""
+
+test_customers = [
+     (150,3),
+     (80,5),
+     (120,1),
+     (600,0),
+     (50,1)
+  ]
+print(f"{'Purchase':<10} |{'Years':<6}|{'VIP Status'}")
+print("-" * 40)
+
+for amount,years in test_customers:
+    is_eligible =(amount > 100 and years > 2) or amount > 500;
+    status= "Eligible" if is_eligible else"Standard"
+    print(f"${amount:<9}|{years:<6}|{status}")
+
+
+
+
+Created on Fri Feb 13 17:25:21 2026
+
+@author: Afra
+"""
+
+ # Problem Statement 2: Create a check for age > 12 AND has_library_card == True.   
+test_cases= [(10,True),
+             (13,True),
+             (15,False),
+             (11,False),
+             (16,True),
+             (12,False)
+             ]
+print(f"{'Age':<5} |{'Library Card':<15}| {'status':<10}")
+print("-" * 40)
+
+for age, Library_Card in test_cases:
+    myvar=(age>12)and (Library_Card==True);
+    status= "Approved" if myvar else "not approved"  
+    
+    print(f"{age:<5}|{Library_Card:<6}| {status:<6}")
+
+
+
+
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Feb 13 18:29:58 2026
+
+@author: Afra
+"""
+# Problem Statement 3:Check if age >= 18 OR (age >= 13 AND has_parental_permission).
+age= int(input("Enter your age :"))
+parents_permission= input("parents permission?:")
+test_children=[(age,parents_permission)]
+
+print(f"{'Age':<5}|{'Parental permission':<20}|{'Result':<7}")
+print('-'*40)
+for age,parent_permission in test_children:
+    result=(age>=18) or (age>=13 and parent_permission=='Yes' or 'yes');
+    status="Eligible" if result else "Not eligible"
+    print(f"{age:<5}|{parent_permission:<20}|{status:<6}")
